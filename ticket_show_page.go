@@ -51,7 +51,7 @@ func (p *TicketShowPage) SelectItem() {
 	if ok, _ := regexp.MatchString(`^epic_links:`, selected); ok {
 		q := new(TicketListPage)
 		q.ActiveQuery.Name = fmt.Sprintf("Open Tasks in Epic %s", p.TicketId)
-		q.ActiveQuery.JQL = fmt.Sprintf("\"Epic Link\" = %s AND resolution = Unresolved", p.TicketId)
+		q.ActiveQuery.JQL = fmt.Sprintf("\"Epic Link\" = %s ORDER BY updated DESC", p.TicketId)
 		previousPages = append(previousPages, currentPage)
 		currentPage = q
 	} else {
